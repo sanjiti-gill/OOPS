@@ -1,97 +1,120 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 
-class Number {
+class number{
     int x;
 
 public:
-    Number() { x = 0; }
-    Number(int a) { x = a; }
+    number(){
+        x=0;
+    }
 
-  
-    // Prefix ++
-    void operator++() {
+    number(int a){
+        x=a;
+    }
+
+    //prefix increment
+    void operator++(){
         ++x;
     }
 
-    // Postfix ++
-    void operator++(int) {
+    //postfix increment
+    void operator++(int){
         x++;
     }
 
-    // + operator 
-    Number operator+(Number obj) {
-        Number temp;
-        temp.x = x + obj.x;
+    //addition
+    number operator+(number obj){
+        number temp;
+        temp.x=x+obj.x;
         return temp;
     }
 
-    // < operator 
-    bool operator<(Number obj) {
+    // < comparison
+    bool operator<(number obj){
         return x < obj.x;
     }
 
-    void display() {
-        cout << "Value: " << x << endl;
+    //equal or not
+    bool operator==(number obj){
+        return x==obj.x;
+    }
+
+    void display(){
+        cout << "value is: " << x << endl;
     }
 };
 
-int main() {
-    Number n1, n2, n3;
-    int choice, val1, val2;
+int main(){
+    int val1,val2;
 
-    cout << "Enter value for first number: ";
+    cout << "enter first number: " ;
     cin >> val1;
-    cout << "Enter value for second number: ";
+    cout << "enter second number:  ";
     cin >> val2;
 
-    n1 = Number(val1);
-    n2 = Number(val2);
+    number n1,n2,n3;
+    n1=number(val1);
+    n2=number(val2);
 
-    do {
-        cout << "\n--- MENU ---\n";
-        cout << "1. Prefix Increment (++n1)\n";
-        cout << "2. Postfix Increment (n1++)\n";
-        cout << "3. Add two numbers (n1 + n2)\n";
-        cout << "4. Compare (n1 < n2)\n";
-        cout << "5. Exit\n";
-        cout << "Enter your choice: ";
-        cin >> choice;
+    int ch;
 
-        switch (choice) {
+    do{
+        cout << "---MENU---"<< endl;
+        cout << "1. prefix increment" << endl;
+        cout << "2. postfix increment" << endl;
+        cout << "3. addition" << endl;
+        cout << "4. < comparison" << endl;
+        cout << "5. == equal or not" << endl;
+        cout << "6.EXIT" << endl;
+        cout << "enter your choice: " ;
+        cin >> ch;
+
+        switch(ch){
             case 1:
-                ++n1;
-                cout << "After prefix increment: ";
-                n1.display();
-                break;
+            ++n1;
+            cout << "after prefix increment: " ;
+            n1.display();
+            break;
 
             case 2:
-                n1++;
-                cout << "After postfix increment: ";
-                n1.display();
-                break;
+            n1++;
+            cout << "after postfix increment: " ;
+            n1.display();
+            break;
 
             case 3:
-                n3=n1 + n2;
-                cout << "After addition: ";
-                n3.display();
-                break;
+            n3=n1+n2;
+            cout << "sum is: " ;
+            n3.display();
+            break;
 
             case 4:
-                if (n1<n2)
-                    cout << "n1 is smaller than n2\n";
-                else
-                    cout << "n1 is NOT smaller than n2\n";
-                break;
+            if(n1<n2){
+                cout << "n1 is smaller than n2" << endl;
+            }
+            else{
+                cout << "n1 is not smaller than n2" << endl;
+            }
+            break;
 
             case 5:
-                cout << "Exiting program...\n";
-                break;
+            if(n1==n2){
+                cout << "n1 and n2 are equal" << endl;
+            }
+            else{
+                cout << "n1 and n2 are not equal" << endl;
+            }
+            break;
+
+            case 6:
+            cout << "exiting program..." << endl;
+            break;
 
             default:
-                cout << "Invalid choice! Try again.\n";
+            cout << "invalid " << endl;
+            break;
         }
-    } while (choice != 5);
-
+    }while(ch!=6);
     return 0;
 }
