@@ -19,6 +19,6 @@ int Student::count = 0;
 
 int main() {
     Student s1, s2, s3;
-    s1.showCount();   // prints 3
+    s1.showCount();      // prints 3
     return 0;
 }
